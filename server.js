@@ -6,7 +6,7 @@ const router = require("./Routes");
 const connectDB = require("./Config/DatabaseConfig");
 
 const app = express();
-const port = 2000;
+const port = 5000;
 
 dotenv.config();
 app.use(cors());
@@ -22,6 +22,6 @@ app.use(
 
 app.use("/api", router);
 
-app.listen(port || 5000, () => {
+app.listen(port || 5002, () => {
   console.log(`Port Startings at ${port}`);
 });

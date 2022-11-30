@@ -37,7 +37,7 @@ const ContactForm = async (req, res) => {
 };
 
 const GetTest = async (req, res, next) => {
-  return res.status(200).join({
+  return res.status(200).json({
     title: "Express Testing",
     message: "The app is working properly!",
   });

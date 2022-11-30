@@ -6,11 +6,10 @@ const router = require("./Routes");
 const connectDB = require("./Config/DatabaseConfig");
 
 const app = express();
-const port = 2000;
 
 dotenv.config();
 app.use(cors());
-
+app.use(express.json());
 connectDB();
 app.use(bodyParser.json());
 
@@ -22,6 +21,6 @@ app.use(
 
 app.use("/api", router);
 
-app.listen(port || 9001, () => {
-  console.log(`Port Startings at ${port}`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`Port Startings at ${process.env.PORT}`);
 });

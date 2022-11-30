@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const router = require("./routes");
+const router = require("./Routes");
 const connectDB = require("./Config/DatabaseConfig");
 
 const app = express();
@@ -22,6 +22,6 @@ app.use(
 
 app.use("/api", router);
 
-app.listen(port || 5000, () => {
+app.listen(port || 9001, () => {
   console.log(`Port Startings at ${port}`);
 });

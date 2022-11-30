@@ -36,6 +36,14 @@ const ContactForm = async (req, res) => {
   }
 };
 
+const GetTest = async (req, res, next) => {
+  return res.status(200).join({
+    title: "Express Testing",
+    message: "The app is working properly!",
+  });
+};
+
 module.exports = {
   ContactForm,
+  GetTest,
 };

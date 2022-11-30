@@ -20,6 +20,6 @@ app.use(
 
 app.use("/api", router);
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Port Startingss at ${process.env.PORT}`);
+app.listen(5000, () => {
+  console.log(`Port Startingss at 5000`);
 });

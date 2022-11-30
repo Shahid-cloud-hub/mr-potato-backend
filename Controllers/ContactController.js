@@ -19,7 +19,7 @@ const ContactForm = async (req, res) => {
       },
     });
     var mailOptions = {
-      to: [mail],
+      to: ["m.shahidalibutt@gmail.com"],
       subject: "Need to Contact",
       html: `<h3 style="color: black; font-weight: 700; ">Message from user:</h3>
              <h4 style="color:#ff6600;">${message}</h4>`,

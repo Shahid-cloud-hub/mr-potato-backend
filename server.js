@@ -9,7 +9,6 @@ const app = express();
 
 dotenv.config();
 app.use(cors());
-app.use(express.json());
 connectDB();
 app.use(bodyParser.json());
 

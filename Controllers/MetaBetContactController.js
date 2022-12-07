@@ -1,7 +1,7 @@
 const metaBetContactSchema = require("../Models/MetaBetContact");
 const nodemailer = require("nodemailer");
 
-const ContactForm = async (req, res) => {
+const MetaBetContactForm = async (req, res) => {
   const { userMessage } = req.body;
   const { mail, message } = userMessage;
   try {
@@ -20,8 +20,8 @@ const ContactForm = async (req, res) => {
     });
     var mailOptions = {
       to: [mail],
-      subject: "Need to Contact",
-      html: `<h3 style="color: black; font-weight: 700; ">Message from user:</h3>
+      subject: "Message from MetaBet Website",
+      html: `<h3 style="color: black; font-weight: 700; ">User Message from MetaBetMask Website:</h3>
              <h4 style="color:#ff6600;">${message}</h4>`,
     };
     transporter.sendMail(mailOptions);
@@ -36,14 +36,37 @@ const ContactForm = async (req, res) => {
   }
 };
 
-const GetTest = async (req, res, next) => {
+const MetaBetGetTest = async (req, res, next) => {
   return res.status(200).json({
-    title: "Express Testing",
+    title: "Express Testing from MetaBet Backend",
     message: "The app is working properly!",
   });
 };
 
+// "/removeMesgMetaById/:id"
+const RemoveMesgMetaById = async (req, res) => {
+  try {
+    let userMessage = await metaBetContactSchema.findOneAndDelete({
+      _id: req.params.id,
+    });
+    if (!userMessage) {
+      return res.status(400).send({
+        message: "User Message not found",
+      });
+    }
+    return res.status(200).send({
+      message: "User Message deleted successfully",
+      data: metaBetContactSchema,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      message: "Server Error",
+    });
+  }
+};
+
 module.exports = {
-  ContactForm,
-  GetTest,
+  MetaBetContactForm,
+  MetaBetGetTest,
+  RemoveMesgMetaById,
 };

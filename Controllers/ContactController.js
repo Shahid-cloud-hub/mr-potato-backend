@@ -20,8 +20,8 @@ const ContactForm = async (req, res) => {
     });
     var mailOptions = {
       to: [mail],
-      subject: "Need to Contact",
-      html: `<h3 style="color: black; font-weight: 700; ">Message from user:</h3>
+      subject: "Message from the Mr. Potato Website",
+      html: `<h3 style="color: black; font-weight: 700; ">User Message from Mr. Potato NFT Website:</h3>
              <h4 style="color:#ff6600;">${message}</h4>`,
     };
     transporter.sendMail(mailOptions);
@@ -38,12 +38,35 @@ const ContactForm = async (req, res) => {
 
 const GetTest = async (req, res, next) => {
   return res.status(200).json({
-    title: "Express Testing",
+    title: "Express Testing Mr. Potato Website",
     message: "The app is working properly!",
   });
+};
+
+// "/RemoveMesgMrPotatoById/:id"
+const RemoveMesgMrPotatoById = async (req, res) => {
+  try {
+    let userMessage = await contactSchema.findOneAndDelete({
+      _id: req.params.id,
+    });
+    if (!userMessage) {
+      return res.status(400).send({
+        message: "User Message not found",
+      });
+    }
+    return res.status(200).send({
+      message: "User Message deleted successfully",
+      data: contactSchema,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      message: "Server Error",
+    });
+  }
 };
 
 module.exports = {
   ContactForm,
   GetTest,
+  RemoveMesgMrPotatoById,
 };

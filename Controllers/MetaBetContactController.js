@@ -1,14 +1,14 @@
-const contactSchema = require("../Models/Contact");
+const metaBetContactSchema = require("../Models/MetaBetContact");
 const nodemailer = require("nodemailer");
 
 const ContactForm = async (req, res) => {
   const { userMessage } = req.body;
   const { mail, message } = userMessage;
   try {
-    const contactData = await new contactSchema({
+    const metaContactData = await new metaBetContactSchema({
       message,
     });
-    await contactData.save();
+    await metaContactData.save();
 
     // Send User message to clients //
     var transporter = nodemailer.createTransport({
@@ -27,7 +27,7 @@ const ContactForm = async (req, res) => {
     transporter.sendMail(mailOptions);
     return res.status(200).send({
       mesg: "User message is successfully stored into DataBase",
-      data: contactData,
+      data: metaContactData,
     });
   } catch (error) {
     return res.status(500).send({

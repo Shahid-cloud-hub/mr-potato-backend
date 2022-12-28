@@ -4,7 +4,6 @@ const nodemailer = require("nodemailer");
 const MetaBetContactForm = async (req, res) => {
   const { userMessage } = req.body;
   const { name, email, mail, message } = userMessage;
-  console.log(userMessage);
   try {
     const metaContactData = await new metaBetContactSchema({
       name,

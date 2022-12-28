@@ -3,9 +3,12 @@ const nodemailer = require("nodemailer");
 
 const MetaBetContactForm = async (req, res) => {
   const { userMessage } = req.body;
-  const { mail, message } = userMessage;
+  const { name, email, mail, message } = userMessage;
+  console.log(userMessage);
   try {
     const metaContactData = await new metaBetContactSchema({
+      name,
+      email,
       message,
     });
     await metaContactData.save();
@@ -19,10 +22,13 @@ const MetaBetContactForm = async (req, res) => {
       },
     });
     var mailOptions = {
-      to: [mail],
+      // to: [mail],
+      to: ["m.shahidalibutt@gmail.com"],
       subject: "Message from MetaBet Website",
       html: `<h3 style="color: black; font-weight: 700; ">User Message from MetaBetMask Website:</h3>
-             <h4 style="color:#ff6600;">${message}</h4>`,
+      <h4 style="color:#ff6600;">User Name: ${name}</h4>
+      <h4 style="color:#ff6600;">User Email: ${email}</h4> 
+             <h4 style="color:#ff6600;">User Message: ${message}</h4>`,
     };
     transporter.sendMail(mailOptions);
     return res.status(200).send({

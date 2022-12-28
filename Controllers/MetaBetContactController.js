@@ -22,8 +22,7 @@ const MetaBetContactForm = async (req, res) => {
       },
     });
     var mailOptions = {
-      // to: [mail],
-      to: ["m.shahidalibutt@gmail.com"],
+      to: [mail],
       subject: "Message from MetaBet Website",
       html: `<h3 style="color: black; font-weight: 700; ">User Message from MetaBetMask Website:</h3>
       <h4 style="color:#ff6600;">User Name: ${name}</h4>

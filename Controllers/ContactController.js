@@ -14,8 +14,8 @@ const ContactForm = async (req, res) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
+        user: 'mpotatotoken@gmail.com',
+        pass: 'jarfcbcrtqpdcdfo',
       },
     });
     var mailOptions = {
